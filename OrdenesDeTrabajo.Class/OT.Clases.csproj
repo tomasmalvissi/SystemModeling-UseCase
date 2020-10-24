@@ -44,15 +44,5 @@
     <Compile Include="Clientes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OrdenesDeTrabajo.WF\OT.WFormularios.csproj">
-      <Project>{32e8f413-ec8b-401d-8e9f-f3f2aaa5d327}</Project>
-      <Name>OT.WFormularios</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\OT.Conex\OT.Conexion.csproj">
-      <Project>{fa9084a0-09e4-4408-8fb7-0b603bf2116d}</Project>
-      <Name>OT.Conexion</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

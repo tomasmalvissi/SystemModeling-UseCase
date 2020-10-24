@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace OT.Conex
 {
-    class DatosConexion
+    public class DatosConexion
     {
         public SqlConnection conexion;
         public string cadenaconex = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog = OT.DB; Integrated Security = True; Connect Timeout = 30; Encrypt=False;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";

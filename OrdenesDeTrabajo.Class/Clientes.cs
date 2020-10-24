@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace OrdenesDeTrabajo.Class
 {
-    class Clientes
+    public class Clientes
     {
         #region Atributos
         private int id;
@@ -21,7 +21,7 @@ namespace OrdenesDeTrabajo.Class
         public int Id
         {
             get{ return id; }
-            set{ id = value; }
+            //set{ id = value; }
         }
         public int Cuil
         {
@@ -51,10 +51,13 @@ namespace OrdenesDeTrabajo.Class
         #endregion
 
         #region Constructor
-        public Clientes(int id, int cuil, string nom, string dir, string tel, string email)
+        public Clientes()
+        {
+        }
+        public Clientes(/*int id,*/ int cuil, string nom, string dir, string tel, string email)
         {
             //Metodo = variable por parametro;
-            Id = id;
+            //Id = id;
             Cuil = cuil;
             Nombre = nom;
             Direccion = dir;
