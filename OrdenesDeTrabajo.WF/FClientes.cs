@@ -73,13 +73,22 @@ namespace OrdenesDeTrabajo.WF
                 }
             }
         }
+
         #endregion
         #region Botones
         private void btnCargar_Click(object sender, EventArgs e)
         {
-            CargarCliente();
-            LimpiarTxt();
-            DgvClientes();
+            if (String.IsNullOrEmpty(txtCuil.Text) || String.IsNullOrEmpty(txtDir.Text) || String.IsNullOrEmpty(txtNom.Text) ||
+                String.IsNullOrEmpty(txtTel.Text) || String.IsNullOrEmpty(txtmail.Text))
+            {
+                MessageBox.Show("Complete todos los campos para realizar esta acción");
+            }
+            else
+            {
+                CargarCliente();
+                LimpiarTxt();
+                DgvClientes();
+            }
         }
 
         private void btnModif_Click(object sender, EventArgs e)
@@ -87,15 +96,23 @@ namespace OrdenesDeTrabajo.WF
             DialogResult avisomodif = MessageBox.Show("¿Quiere modificar el registro seleccionado?", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
             if (avisomodif == DialogResult.Yes)
             {
-                InitVariables();
-                cliente.Cuil = cuil;
-                cliente.Nombre = nom;
-                cliente.Direccion = dir;
-                cliente.Telefono = tel;
-                cliente.Email = email;
-                accion = "Modificar";
-                datcli.ABMClientes(accion, cliente);
-                LimpiarTxt();
+                if (String.IsNullOrEmpty(txtCuil.Text) || String.IsNullOrEmpty(txtDir.Text) || String.IsNullOrEmpty(txtNom.Text) ||
+                    String.IsNullOrEmpty(txtTel.Text) || String.IsNullOrEmpty(txtmail.Text))
+                {
+                    MessageBox.Show("Complete todos los campos para realizar esta acción");
+                }
+                else
+                {
+                    InitVariables();
+                    cliente.Cuil = cuil;
+                    cliente.Nombre = nom;
+                    cliente.Direccion = dir;
+                    cliente.Telefono = tel;
+                    cliente.Email = email;
+                    accion = "Modificar";
+                    datcli.ABMClientes(accion, cliente);
+                    LimpiarTxt();
+                }
             }
             DgvClientes();
         }
