@@ -30,16 +30,15 @@ namespace OT.Conex
 
                 case "Modificar":
                     orden = "update Clientes set "
-                                        + "Cuil= '" + clientes.Cuil + "',"
                                         + "Nombre= '" + clientes.Nombre + "',"
                                         + "Direccion= '" + clientes.Direccion + "',"
                                         + "Telefono= '" + clientes.Telefono + "',"
                                         + "Email= '" + clientes.Email + "'"
-                                        + "where Id= " + clientes.Id;
+                                        + "where Cuil= " + clientes.Cuil;
                     break;
 
                 case "Eliminar":
-                    orden = "Delete from Clientes where DNI = " + clientes.Id;
+                    orden = "Delete from Clientes where Id = " + clientes.Id;
                     break;
                 
 

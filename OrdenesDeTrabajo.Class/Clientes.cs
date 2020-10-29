@@ -21,7 +21,7 @@ namespace OrdenesDeTrabajo.Class
         public int Id
         {
             get{ return id; }
-            //set{ id = value; }
+            set{ id = value; }
         }
         public int Cuil
         {

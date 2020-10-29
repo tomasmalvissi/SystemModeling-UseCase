@@ -25,6 +25,7 @@ namespace OrdenesDeTrabajo.WF
         public FClientes()
         {
             InitializeComponent();
+            DgvClientes();
         }
         #region Instancias
         Clientes cliente = new Clientes();
@@ -61,6 +62,7 @@ namespace OrdenesDeTrabajo.WF
         }
         private void DgvClientes()
         {
+            dgv.Rows.Clear();
             DataSet ds = new DataSet();
             ds = datcli.MostrarClientes("Todos");
             if (ds.Tables[0].Rows.Count > 0)
@@ -72,20 +74,61 @@ namespace OrdenesDeTrabajo.WF
             }
         }
         #endregion
+        #region Botones
         private void btnCargar_Click(object sender, EventArgs e)
         {
             CargarCliente();
             LimpiarTxt();
+            DgvClientes();
         }
 
         private void btnModif_Click(object sender, EventArgs e)
         {
-
+            DialogResult avisomodif = MessageBox.Show("¿Quiere modificar el registro seleccionado?", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Information);
+            if (avisomodif == DialogResult.Yes)
+            {
+                InitVariables();
+                cliente.Cuil = cuil;
+                cliente.Nombre = nom;
+                cliente.Direccion = dir;
+                cliente.Telefono = tel;
+                cliente.Email = email;
+                accion = "Modificar";
+                datcli.ABMClientes(accion, cliente);
+                LimpiarTxt();
+            }
+            DgvClientes();
         }
 
         private void btnElim_Click(object sender, EventArgs e)
         {
-
+            DialogResult avisoelimina = MessageBox.Show("¿Quiere eliminar el registro seleccionado?", "Alerta", MessageBoxButtons.YesNo, MessageBoxIcon.Error);
+            if (avisoelimina == DialogResult.Yes)
+            {
+                string accion = "Eliminar";
+                cliente.Id = Convert.ToInt32(dgv.CurrentRow.Cells[0].Value.ToString());
+                datcli.ABMClientes(accion, cliente);
+            }
+            DgvClientes();
         }
+
+        private void txtCuil_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            {
+                foreach (DataGridViewRow dr in dgv.Rows)
+                {
+                    if (txtCuil.Text == dr.Cells[1].Value.ToString())
+                    {
+                        txtNom.Text = dr.Cells[2].Value.ToString();
+                        txtDir.Text = dr.Cells[3].Value.ToString();
+                        txtTel.Text = dr.Cells[4].Value.ToString();
+                        txtmail.Text = dr.Cells[5].Value.ToString();
+                        break;
+                    }
+                }
+            }
+        }
+        #endregion
     }
 }
