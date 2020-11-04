@@ -26,6 +26,8 @@ namespace OrdenesDeTrabajo.WF
         {
             InitializeComponent();
             DgvClientes();
+            btnCargar.Visible = false;
+            btnElim.Visible = false;
         }
         #region Instancias
         Clientes cliente = new Clientes();
