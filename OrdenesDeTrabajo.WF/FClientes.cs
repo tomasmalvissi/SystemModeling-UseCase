@@ -133,7 +133,7 @@ namespace OrdenesDeTrabajo.WF
 
         private void txtCuil_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == Convert.ToChar(Keys.Enter))
+            if (e.KeyChar == Convert.ToChar(Keys.Enter) && !String.IsNullOrEmpty(txtCuil.Text)) //ver como controlar q ingrese un valor valido fuera del foreach
             {
                 foreach (DataGridViewRow dr in dgv.Rows)
                 {
